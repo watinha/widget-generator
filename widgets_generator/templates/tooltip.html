@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="../.{{theme}}"
+              type="text/css" charset="utf-8"></link>
+        <title>Tooltip</title>
+    </head>
+    <body>
+        <a href="#" id="tooltip" title="{{content}}">tooltip</a>
+        <a href="#" id="tooltip2" title="something" style="margin-left:100px">tooltip2</a>
+        <script type="text/javascript" charset="utf-8"
+                src="../../jqueryui/external/jquery/jquery.js"></script>
+        <script type="text/javascript" charset="utf-8"
+                src="../../jqueryui/jquery-ui.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            $(function () {
+                $("#tooltip").tooltip();
+                $("#tooltip2").tooltip({content: '{{{content2}}}'});
+            });
+        </script>
+    </body>
+</html>

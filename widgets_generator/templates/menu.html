@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="../.{{theme}}"
+              type="text/css" charset="utf-8"></link>
+        <title>Tooltip</title>
+        <style type="text/css" media="screen">
+            .ui-menu .ui-menu-item {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <ul id="menu2" style="">
+            {{#menu2}}
+            <li style="display:inline-block">{{content}}
+                {{#multi}}
+                    <ul style="width:{{columns}}00px">
+                    {{#submenu}}
+                        <li style="float:left;width:200px">{{content}}</li>
+                    {{/submenu}}
+                    </ul>
+                {{/multi}}
+                {{^multi}}
+                    <ul>
+                    {{#submenu}}
+                        <li>{{content}}</li>
+                    {{/submenu}}
+                    </ul>
+                {{/multi}}
+            </li>
+            {{/menu2}}
+        </ul>
+        <ul id="menu" style="margin-top:30px;width:100px">
+            {{#menu1}}
+            <li>{{content}}
+                <ul>
+                {{#submenu}}
+                    <li>{{content}}</li>
+                {{/submenu}}
+                </ul>
+            </li>
+            {{/menu1}}
+        </ul>
+        <script type="text/javascript" charset="utf-8"
+                src="../../jqueryui/external/jquery/jquery.js"></script>
+        <script type="text/javascript" charset="utf-8"
+                src="../../jqueryui/jquery-ui.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            $(function () {
+                $("#menu").menu({
+                    position: {
+                        my: "left top",
+                        at: "right top"
+                    }
+                });
+                $("#menu2").menu({
+                    position: {
+                        my: "left top",
+                        at: "left bottom"
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
