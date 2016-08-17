@@ -59,7 +59,7 @@ App = {
                 content: App._generate_word(10),
                 submenu: [],
                 multi: (submenus > 20),
-                columns: (Math.floor(Math.random() * 10) * 2)
+                columns: (Math.max((Math.floor(Math.random() * 10) * 2), 1))
             });
             for (var j = 0; j < submenus; j++) {
                 if (!prior || aux[i].multi || Math.random() > 0.5) {
