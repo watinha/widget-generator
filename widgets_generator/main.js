@@ -35,8 +35,8 @@ App = {
         };
     },
 
-    _generate_word: function (seed) {
-        var str = "", words = Math.random() * seed,
+    _generate_word: function (seed, number_of_words) {
+        var str = "", words = (number_of_words ? number_of_words : (Math.random() * seed)),
             chars = "ABCDEFGHIJKLMNOPQRSTUVXWYZabcdefghijklmnopqrstuvxwyz0123456789 -+*&$%#@!";
         for (var i = 0; i < words; i++) {
             size = Math.random() * seed;
@@ -56,7 +56,7 @@ App = {
             if (Math.random() > 0.7)
                 submenus = Math.random() * 40;
             aux.push({
-                content: App._generate_word(10),
+                content: App._generate_word(10, 2),
                 submenu: [],
                 multi: (submenus > 20),
                 columns: (Math.max((Math.floor(Math.random() * 10) * 2), 1))
@@ -64,7 +64,7 @@ App = {
             for (var j = 0; j < submenus; j++) {
                 if (!prior || aux[i].multi || Math.random() > 0.5) {
                     aux[i].submenu.push({
-                        content: App._generate_word(10)
+                        content: App._generate_word(10, 2)
                     });
                     prior = true;
                 } else {
