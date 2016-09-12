@@ -12,9 +12,40 @@
             #menu2 {
                 margin-bottom: 200px;
             }
+            #slideshow {
+                position: absolute;
+                z-index: -1;
+                top: 0;
+                left: 0;
+                height: 100px;
+                width: 100px;
+                transition: all linear 0.3s;
+                overflow: hidden;
+            }
+            .mask {
+                width: 1500px;
+                height: 1500px;
+                transition: all linear 0.3s;
+            }
+            #slideshow > .mask > div {
+                transition: all linear 0.3s;
+                float: left;
+                height: 100px;
+                width: 100px;
+            }
         </style>
     </head>
     <body>
+        <div id="slideshow">
+            <div class="mask">
+                <div style="background-color: red"></div>
+                <div style="background-color: blue"></div>
+                <div style="background-color: purple"></div>
+                <div style="background-color: orange"></div>
+                <div style="background-color: green"></div>
+                <div style="background-color: yellow"></div>
+            </div>
+        </div>
         <ul id="menu2" style="">
             {{#menu2}}
             <li style="display:block;position:absolute;top:{{top}}px;left:{{left}}px">{{content}}
@@ -65,6 +96,36 @@
                     }
                 });
             });
+        </script>
+        <script type="text/javascript" charset="utf-8">
+            var count = 0,
+                height = 100,
+                width = 100,
+                top_d = 0,
+                left = 0,
+                mask = document.querySelector("#slideshow .mask"),
+                slideshow = document.querySelector("#slideshow"),
+                all_divs = document.querySelectorAll("#slideshow .mask div");
+            setInterval(function () {
+                height = Math.round((Math.random() * 1000));
+                width = Math.round((Math.random() * 1000));
+                top_d = Math.round((Math.random() * 1000));
+                left = Math.round((Math.random() * 1000));
+                count = (count + 1) % 6;
+
+                slideshow.style.top = top_d + "px";
+                slideshow.style.left = left + "px";
+                slideshow.style.height = height + "px";
+                slideshow.style.width = width + "px";
+                mask.style.height = height + "px";
+                mask.style.width = (width * 7) + "px";
+                for (var i = 0; i < all_divs.length; i++) {
+                    all_divs[i].style.height = height + "px";
+                    all_divs[i].style.width = width + "px";
+                }
+
+                mask.style.transform = "translateX(" + ((-width*count) + "px)");
+            }, 3000);
         </script>
     </body>
 </html>
