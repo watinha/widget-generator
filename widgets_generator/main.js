@@ -19,7 +19,9 @@ App = {
                     content2 = App._generate_content();
                     html_stream = mu.compileAndRender(
                         'templates/tooltip.html',
-                        {theme: themes[i], content: content, content2: content2});
+                        { theme: themes[i], top: Math.round((Math.random() * 600)), left: Math.round((Math.random() * 1000)),
+                          top2: Math.round((Math.random() * 600)), left2: Math.round((Math.random() * 1000)),
+                          content: content, content2: content2});
                     html_stream.pipe(
                         fs.createWriteStream(
                             `results/tooltip${index}-${index2}.html`));
@@ -57,6 +59,8 @@ App = {
                 submenus = Math.random() * 40;
             aux.push({
                 content: App._generate_word(10, 2),
+                top: Math.round((Math.random() * 600)),
+                left: Math.round((Math.random() * 1000)),
                 submenu: [],
                 multi: (submenus > 20),
                 columns: (Math.max((Math.floor(Math.random() * 10) * 2), 1))
