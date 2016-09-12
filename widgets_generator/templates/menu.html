@@ -17,7 +17,7 @@
     <body>
         <ul id="menu2" style="">
             {{#menu2}}
-            <li style="display:inline-block">{{content}}
+            <li style="display:block;position:absolute;top:{{top}}px;left:{{left}}px">{{content}}
                 {{#multi}}
                     <ul style="width:{{columns}}00px">
                     {{#submenu}}
@@ -35,9 +35,9 @@
             </li>
             {{/menu2}}
         </ul>
-        <ul id="menu" style="margin-top:30px;width:100px">
+        <ul id="menu" style="margin-top:300px;width:100px">
             {{#menu1}}
-            <li>{{content}}
+            <li style="display:block;position:absolute;top:{{top}}px;left:{{left}}px">{{content}}
                 <ul>
                 {{#submenu}}
                     <li>{{content}}</li>
